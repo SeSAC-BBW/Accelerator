@@ -1,2 +1,27 @@
 # Accelerator
-Acceleration repository for SeSAC-BBW team
+Brake-by-Wire(BBW) 팀 프로젝트 중 가속 제어 로직을 담당하는 저장소
+
+## 📌 주요 기능
+**STM32 통신:** SoftwareSerial을 통해 STM32-A 보드로부터 엔진 시동(ON/OFF) 및 상태 신호를 수신
+**모터 속도 제어:** 가변저항(Potentiometer)의 아날로그 입력을 받아 모터의 속도를 PWM 방식으로 정밀 제어
+**엔코더 기반 RPM 측정:** 인터럽트(`attachInterrupt`)를 활용하여 모터의 회전수를 실시간으로 계산
+**상태 출력:** I2C LCD를 통해 현재의 엔진 상태, 모터 속도(SPD), 실시간 RPM을 시각적으로 표시
+**하드웨어 연동:** 릴레이 제어를 통한 전원 공급 관리 및 특정 조건(Brake Over 4000) 발생 시 외부 신호(Servo Signal)를 전송
+
+## 📂 폴더 구조
+* `sketch_jan14_accel/`: 가속 제어 메인 아두이노 소스 코드 (`.ino`)
+* `libraries/`: 프로젝트 구동에 필요한 외부 라이브러리 (`LiquidCrystal_I2C`)
+
+## 🛠 하드웨어 구성 (Pin Map)
+| 기능 | 핀 번호 | 비고 |
+|:---:|:---:|:---|
+| **가변저항 (Pot)** | A2 | 가속 입력 |
+| **모터 제어 (PWM)** | D3 | 속도 제어 |
+| **모터 방향 (DIR)** | D12 | 방향 제어 |
+| **브레이크 (Brake)** | D9 | 정지 및 유지 |
+| **엔코더 (A상)** | D2 | 인터럽트 |
+| **엔코더 (B상)** | D5 | 방향 판별용 |
+| **UART RX** | D7 | 데이터 수신 (SoftwareSerial) |
+| **LCD I2C** | SDA, SCL | 0x27 주소 사용 |
+| **릴레이 제어** | D4 | STM32-B 전원 공급 제어 |
+| **서보 신호** | D6 | STM32-B에 신호 전송 |
