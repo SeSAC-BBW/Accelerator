@@ -1,12 +1,11 @@
-# Accelerator
-Brake-by-Wire(BBW) 팀 프로젝트 중 가속 제어 로직을 담당하는 저장소
+# 🏎️ Accelerator Control System
+SeSAC Mobility Embedded Training Program의 Brake-by-Wire(BBW) 프로젝트 중 가속 제어 및 시스템 상태 모니터링 로직을 담당하는 저장소
 
 ## 📌 주요 기능
-**STM32 통신:** SoftwareSerial을 통해 STM32-A 보드로부터 엔진 시동(ON/OFF) 및 상태 신호를 수신
-**모터 속도 제어:** 가변저항(Potentiometer)의 아날로그 입력을 받아 모터의 속도를 PWM 방식으로 정밀 제어
-**엔코더 기반 RPM 측정:** 인터럽트(`attachInterrupt`)를 활용하여 모터의 회전수를 실시간으로 계산
-**상태 출력:** I2C LCD를 통해 현재의 엔진 상태, 모터 속도(SPD), 실시간 RPM을 시각적으로 표시
-**하드웨어 연동:** 릴레이 제어를 통한 전원 공급 관리 및 특정 조건(Brake Over 4000) 발생 시 외부 신호(Servo Signal)를 전송
+실시간 시동 제어: STM32 보드로부터 시리얼 데이터를 수신하여 릴레이를 통해 전원을 제어하고 시스템의 Engine ON/OFF 상태를 관리
+정밀 모터 가속: 가변저항 센서 값을 읽어 모터 쉴드의 PWM 속도를 제어하며, 급제동 시 즉각적인 브레이크 모드를 활성화
+RPM 및 상태 모니터링: 2상 엔코더와 인터럽트를 사용하여 실시간 RPM을 계산하고, I2C LCD에 현재 엔진 상태와 속도를 출력
+서보 트리거 신호: 특정 브레이크 임계치 도달 시(BRAKE OVER 4000) 외부 STM32 장치로 제어 신호를 전송
 
 ## 📂 폴더 구조
 * `sketch_jan14_accel/`: 가속 제어 메인 아두이노 소스 코드 (`.ino`)
