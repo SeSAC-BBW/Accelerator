@@ -1,10 +1,17 @@
-# 🏎️ Accelerator Control System (SeSAC-BBW Team)
+# 🏎️ Accelerator Control System
 
 본 저장소는 **SeSAC Mobility Embedded Training Program**의 **Brake-by-Wire(BBW)** 프로젝트 중 가속 제어 및 시스템 상태 모니터링 로직을 담당
 
+## 💻 개발 환경
 
+| :--- | :--- |
+| **OS** | Windows 10 |
+| **IDE** | Arduino IDE 2.3.6 |
+| **Language** |  C/C++ (Arduino) |
+| **Library** | `LiquidCrystal_I2C`, `SoftwareSerial`, `Wire` |
+| **Hardware** | Arduino Uno R3, I2C 1602 LCD, Potentiometer, Motor Shield R3, Encoder Motor |
 
-## 📌 주요 기능 (Core Features)
+## 📌 주요 기능
 
 * **실시간 시동 제어:** STM32 보드로부터 시리얼 데이터를 수신하여 릴레이를 통해 전원을 제어하고 시스템의 Engine ON/OFF 상태를 관리
 
@@ -16,7 +23,7 @@
 
 
 
-## 🛠 하드웨어 구성 (Hardware Pin Map)
+## 🛠 하드웨어 구성 (Pin Map)
 
 | 구분 | 기능 | 핀 번호 | I/O | 상세 설명 |
 | :---: | :--- | :---: | :---: | :--- |
